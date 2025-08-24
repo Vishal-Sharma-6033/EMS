@@ -7,31 +7,30 @@ import EmployeeDeshboard from './Components/Deshboard/EmployeeDeshboard'
 import { AuthContext } from './Context/AuthProvider'
 
 function App() {
-  // useEffect(() => {
-  //   // setLocalstorage()
-  //   getLocalstorage()
-  // },);
-  const [user, setUser] = useState([]);
+ 
+  
+  const [user, setUser] = useState(null);
 
     const Authdata=useContext(AuthContext)
+    console.log(Authdata)
 
-    useEffect(() => {
-      if(Authdata){
-      const loggedInuser=localStorage.getItem("loggedInuser")
-      if(loggedInuser){
-        setUser(loggedInuser.role)
-      }
-      }
-    }, [Authdata]);
+  //   useEffect(() => {
+  //     if(Authdata){
+  //     const loggedInuser=localStorage.getItem("loggedInuser")
+  //     if(loggedInuser){
+  //       setUser(loggedInuser.role)
+  //     }
+  //     }
+  //   }, [Authdata]);
   // Authdata && Authdata.Employess.find((e)=>email==e.email && password==e.password)
 
   const handlelogin=(email,password)=>{
     if(email=='admin@me.com' && password=='123'){
       setUser('admin')
-      localStorage.setItem('loggedInuser',JSON.stringify({role:'Admin'}))
+      // localStorage.setItem('loggedInuser',JSON.stringify({role:'Admin'}))
     } else if(email=='Employee@me.com' && password=='123'){
       setUser('employee')
-            localStorage.setItem('loggedInuser',JSON.stringify({role:'Employess'}))
+      //       localStorage.setItem('loggedInuser',JSON.stringify({role:'Employess'}))
 
     }else{
       alert("Bhag Mc")
@@ -45,10 +44,11 @@ function App() {
 
   return (
     <>
-    {!user ? <Login handlelogin={handlelogin} /> : ''}
-     {user=='admin'?<AdminDeshboard/>:<EmployeeDeshboard/>}
-     
+{!user ? <Login handlelogin={handlelogin} /> : ''}
+      {user == 'admin' ? <AdminDeshboard  /> : <EmployeeDeshboard /> }
 
+     
+      <Login/>
     </>
   )
 }

@@ -5,10 +5,10 @@ const [email, setEmail] = useState('');
 const [password, setPassword ] = useState('');
 
   const submitHandler=(e)=>{
-    e.preventDefault()
-    handlelogin(email,password)
-    setEmail('')
-    setPassword('')
+    e.preventDefault();
+    handlelogin(email,password);
+    setEmail('');
+    setPassword('');
   }
 
   return (
@@ -19,14 +19,14 @@ const [password, setPassword ] = useState('');
         
         className="flex flex-col items-center justify-center">
           <input
-          value={email}
+          // value={email}
             onChange={(e)=>{setEmail(e.target.value)}}
             className="px-6 py-2 text-lg font-medium bg-transparent border-2 rounded-full outline-none border-emerald-600 placeholder:text-gray-400"
             type="email"
             placeholder="Enter your email"
           />
           <input
-          value={password}
+          // value={password}
           onChange={(e)=>{setPassword(e.target.value)}}
             className="px-6 py-2 mt-3 text-lg font-medium bg-transparent border-2 rounded-full outline-none border-emerald-600 placeholder:text-gray-400"
             type="password"
